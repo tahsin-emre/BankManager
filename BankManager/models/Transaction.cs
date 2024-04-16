@@ -10,15 +10,18 @@ namespace BankManager.models
         public string Price = rdr["Price"].ToString()!;
         public string ProcessDate = rdr["ProcessDate"].ToString()!;
 
-
-        public ListViewItem toItem()
+        public ListViewItem ToItem()
         {
-            ListViewItem item = new ListViewItem();
-            item.Text = TransactionID;
-            item.SubItems.Add(SenderID);
-            item.SubItems.Add(ReceiverID);
-            item.SubItems.Add(Price);
-            item.SubItems.Add(ProcessDate);
+            ListViewItem item = new ListViewItem()
+            {
+                Text = TransactionID,
+                SubItems = {
+                    SenderID,
+                    ReceiverID,
+                    Price,
+                    ProcessDate,
+                }
+            };
             return item;
         }
     }

@@ -13,20 +13,29 @@ namespace BankManager.models
         public string Phone = rdr["PhoneNumber"].ToString()!;
         public string RegisterationDate = rdr["RegistrationDate"].ToString()!;
 
-        public ListViewItem toItem()
+        public ListViewItem ToListItem()
         {
-            ListViewItem item=new ListViewItem();
-            item.Text = CustomerID;
-            //item.SubItems.Add(CustomerID);
-            item.SubItems.Add(CitizenID);
-            item.SubItems.Add(FirstName);
-            item.SubItems.Add(LastName);
-            item.SubItems.Add(Email);
-            item.SubItems.Add(Phone);
-            item.SubItems.Add(RegisterationDate);
-            item.SubItems.Add(ManagerID);
+            var item = new ListViewItem()
+            {
+                Text = CustomerID,
+                SubItems = {
+                    CitizenID,
+                    FirstName,
+                    LastName,
+                    Email,
+                    Phone,
+                    RegisterationDate,
+                    ManagerID
+                }
+            };
             return item;
         }
-    
+
+        public string ToComboItem()
+        {
+            var item = $"{FirstName} {LastName} {CitizenID}";
+            return item;
+        }
+
     }
 }

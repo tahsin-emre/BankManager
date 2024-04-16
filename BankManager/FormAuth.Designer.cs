@@ -34,16 +34,6 @@
             label1 = new Label();
             label2 = new Label();
             groupBox1 = new GroupBox();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            button2 = new Button();
-            listView2 = new ListView();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            button4 = new Button();
             groupBox2 = new GroupBox();
             textBox3 = new TextBox();
             label3 = new Label();
@@ -70,6 +60,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(156, 23);
             textBox1.TabIndex = 1;
+            textBox1.Text = "thsn";
             // 
             // textBox2
             // 
@@ -77,6 +68,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(156, 23);
             textBox2.TabIndex = 2;
+            textBox2.Text = "sifre";
             // 
             // label1
             // 
@@ -103,82 +95,12 @@
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(textBox2);
-            groupBox1.Location = new Point(12, 259);
+            groupBox1.Location = new Point(449, 70);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(339, 155);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Manager Login";
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Location = new Point(12, 12);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(339, 189);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 30;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "User Name";
-            columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Password";
-            columnHeader3.Width = 100;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(12, 207);
-            button2.Name = "button2";
-            button2.Size = new Size(131, 46);
-            button2.TabIndex = 7;
-            button2.Text = "Get Managers Info";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // listView2
-            // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader4, columnHeader5, columnHeader6 });
-            listView2.Location = new Point(449, 12);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(339, 189);
-            listView2.TabIndex = 8;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "ID";
-            columnHeader4.Width = 30;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Citizenship ID";
-            columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Password";
-            columnHeader6.Width = 100;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(449, 207);
-            button4.Name = "button4";
-            button4.Size = new Size(131, 46);
-            button4.TabIndex = 9;
-            button4.Text = "Get Customers Info";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
             // 
             // groupBox2
             // 
@@ -200,6 +122,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(156, 23);
             textBox3.TabIndex = 6;
+            textBox3.Text = "16586307792";
             // 
             // label3
             // 
@@ -235,6 +158,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(156, 23);
             textBox4.TabIndex = 7;
+            textBox4.Text = "password";
             // 
             // FormAuth
             // 
@@ -242,10 +166,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(groupBox2);
-            Controls.Add(button4);
-            Controls.Add(listView2);
-            Controls.Add(button2);
-            Controls.Add(listView1);
             Controls.Add(groupBox1);
             Name = "FormAuth";
             Text = "FormAuth";
@@ -264,16 +184,6 @@
         private Label label1;
         private Label label2;
         private GroupBox groupBox1;
-        private ListView listView1;
-        private Button button2;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ListView listView2;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private Button button4;
         private GroupBox groupBox2;
         private TextBox textBox3;
         private Label label3;
