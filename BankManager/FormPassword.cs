@@ -1,5 +1,4 @@
 ﻿using BankManager.service;
-using MySql.Data.MySqlClient;
 
 namespace BankManager
 {
@@ -12,26 +11,23 @@ namespace BankManager
             InitializeComponent();
             this.type = type;
             this.userid = userid;
+            this.ForeColor = AppTheme.foreColor;
+            this.BackColor = AppTheme.backColor;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = $"UPDATE {type}s " +
-                $"SET Pwd='{textBox1.Text}' " +
-                $"WHERE {type}ID={userid}";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                cmd.ExecuteNonQuery();
-                DBConnect.conn.Close();
+                string query = $"UPDATE {type}s " +
+                $"SET Pwd='{textBox1.Text}' " +
+                $"WHERE {type}ID={userid}";
+                DBService.Execute(query);
                 MessageBox.Show("Successfully");
                 this.Close();
-
             }
             catch (Exception ex)
             {
-                DBConnect.conn.Close();
                 MessageBox.Show($"Something Went Wrong.. {ex.Message}");
             }
         }

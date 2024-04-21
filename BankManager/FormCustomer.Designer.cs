@@ -75,6 +75,9 @@
             signOutToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             refreshToolStripMenuItem = new ToolStripMenuItem();
+            themeToolStripMenuItem = new ToolStripMenuItem();
+            dayToolStripMenuItem = new ToolStripMenuItem();
+            nightToolStripMenuItem = new ToolStripMenuItem();
             label8 = new Label();
             label12 = new Label();
             tabControl1.SuspendLayout();
@@ -94,7 +97,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(16, 24);
+            label1.Location = new Point(16, 22);
             label1.Name = "label1";
             label1.Size = new Size(171, 30);
             label1.TabIndex = 0;
@@ -108,7 +111,7 @@
             tabControl1.Location = new Point(12, 57);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(842, 449);
+            tabControl1.Size = new Size(760, 401);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -118,7 +121,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(834, 421);
+            tabPage1.Size = new Size(752, 373);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Accounts";
             tabPage1.UseVisualStyleBackColor = true;
@@ -133,7 +136,7 @@
             panel1.Controls.Add(button2);
             panel1.Controls.Add(amountBox);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(366, 6);
+            panel1.Location = new Point(496, 136);
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 222);
             panel1.TabIndex = 4;
@@ -220,7 +223,7 @@
             accountListView.Location = new Point(6, 6);
             accountListView.MultiSelect = false;
             accountListView.Name = "accountListView";
-            accountListView.Size = new Size(354, 409);
+            accountListView.Size = new Size(345, 352);
             accountListView.TabIndex = 0;
             accountListView.UseCompatibleStateImageBehavior = false;
             accountListView.View = View.Details;
@@ -248,7 +251,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(834, 421);
+            tabPage2.Size = new Size(752, 373);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Money Transaction";
             tabPage2.UseVisualStyleBackColor = true;
@@ -261,7 +264,7 @@
             transactionListView.Location = new Point(6, 6);
             transactionListView.MultiSelect = false;
             transactionListView.Name = "transactionListView";
-            transactionListView.Size = new Size(536, 409);
+            transactionListView.Size = new Size(538, 355);
             transactionListView.TabIndex = 8;
             transactionListView.UseCompatibleStateImageBehavior = false;
             transactionListView.View = View.Details;
@@ -300,7 +303,7 @@
             groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(numericUpDown2);
-            groupBox1.Location = new Point(616, 78);
+            groupBox1.Location = new Point(585, 122);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(155, 239);
             groupBox1.TabIndex = 7;
@@ -374,7 +377,7 @@
             tabPage3.Controls.Add(cardListView);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(834, 421);
+            tabPage3.Size = new Size(752, 373);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Credit Cards";
             tabPage3.UseVisualStyleBackColor = true;
@@ -384,16 +387,16 @@
             groupBox2.Controls.Add(button4);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(limitBox);
-            groupBox2.Location = new Point(533, 12);
+            groupBox2.Location = new Point(571, 222);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(285, 137);
+            groupBox2.Size = new Size(167, 137);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "New Card Application";
             // 
             // button4
             // 
-            button4.Location = new Point(129, 85);
+            button4.Location = new Point(25, 93);
             button4.Name = "button4";
             button4.Size = new Size(120, 29);
             button4.TabIndex = 2;
@@ -404,16 +407,16 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(25, 40);
+            label11.Location = new Point(21, 36);
             label11.Name = "label11";
-            label11.Size = new Size(62, 15);
+            label11.Size = new Size(65, 15);
             label11.TabIndex = 1;
-            label11.Text = "Card Limit";
+            label11.Text = "Card Limit:";
             // 
             // limitBox
             // 
             limitBox.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            limitBox.Location = new Point(129, 38);
+            limitBox.Location = new Point(25, 61);
             limitBox.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             limitBox.Minimum = new decimal(new int[] { 1000, 0, 0, 0 });
             limitBox.Name = "limitBox";
@@ -426,10 +429,10 @@
             cardListView.Columns.AddRange(new ColumnHeader[] { columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
             cardListView.FullRowSelect = true;
             cardListView.GridLines = true;
-            cardListView.Location = new Point(12, 12);
+            cardListView.Location = new Point(8, 8);
             cardListView.MultiSelect = false;
             cardListView.Name = "cardListView";
-            cardListView.Size = new Size(502, 395);
+            cardListView.Size = new Size(475, 351);
             cardListView.TabIndex = 0;
             cardListView.UseCompatibleStateImageBehavior = false;
             cardListView.View = View.Details;
@@ -459,7 +462,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { accountToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(866, 24);
+            menuStrip1.Size = new Size(784, 24);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -488,7 +491,7 @@
             // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { refreshToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, themeToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new Size(80, 20);
             helpToolStripMenuItem.Text = "Application";
@@ -497,15 +500,36 @@
             // 
             refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             refreshToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
-            refreshToolStripMenuItem.Size = new Size(180, 22);
+            refreshToolStripMenuItem.Size = new Size(154, 22);
             refreshToolStripMenuItem.Text = "Refresh";
             refreshToolStripMenuItem.Click += refreshToolStripMenuItem_Click;
+            // 
+            // themeToolStripMenuItem
+            // 
+            themeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dayToolStripMenuItem, nightToolStripMenuItem });
+            themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            themeToolStripMenuItem.Size = new Size(154, 22);
+            themeToolStripMenuItem.Text = "Theme";
+            // 
+            // dayToolStripMenuItem
+            // 
+            dayToolStripMenuItem.Name = "dayToolStripMenuItem";
+            dayToolStripMenuItem.Size = new Size(104, 22);
+            dayToolStripMenuItem.Text = "Day";
+            dayToolStripMenuItem.Click += dayToolStripMenuItem_Click;
+            // 
+            // nightToolStripMenuItem
+            // 
+            nightToolStripMenuItem.Name = "nightToolStripMenuItem";
+            nightToolStripMenuItem.Size = new Size(104, 22);
+            nightToolStripMenuItem.Text = "Night";
+            nightToolStripMenuItem.Click += nightToolStripMenuItem_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(598, 24);
+            label8.Location = new Point(601, 24);
             label8.Name = "label8";
             label8.Size = new Size(164, 30);
             label8.TabIndex = 0;
@@ -514,9 +538,10 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(510, 34);
+            label12.Font = new Font("Segoe UI", 12F);
+            label12.Location = new Point(487, 29);
             label12.Name = "label12";
-            label12.Size = new Size(84, 15);
+            label12.Size = new Size(111, 21);
             label12.TabIndex = 4;
             label12.Text = "Your Manager:";
             // 
@@ -524,7 +549,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(866, 518);
+            ClientSize = new Size(784, 461);
             Controls.Add(label12);
             Controls.Add(menuStrip1);
             Controls.Add(tabControl1);
@@ -604,5 +629,8 @@
         private Label label11;
         private NumericUpDown limitBox;
         private Label label12;
+        private ToolStripMenuItem themeToolStripMenuItem;
+        private ToolStripMenuItem dayToolStripMenuItem;
+        private ToolStripMenuItem nightToolStripMenuItem;
     }
 }

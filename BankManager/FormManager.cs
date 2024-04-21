@@ -5,20 +5,16 @@ using MySql.Data.MySqlClient;
 
 namespace BankManager
 {
-
     public partial class FormManager : Form
     {
-
         Manager manager;
         List<Customer> customers = [];
-        Customer? selectedCustomer;
         List<Account> accounts = [];
-        Account? selectedAccount;
         List<Transaction> transactions = [];
         List<Card> cards = [];
+        Customer? selectedCustomer;
+        Account? selectedAccount;
         Card? selectedCard;
-
-
         public FormManager(Manager myManager)
         {
             manager = myManager;
@@ -26,7 +22,7 @@ namespace BankManager
         }
         private void FormManager_Load(object sender, EventArgs e)
         {
-            label6.Text = $"{manager.FirstName} {manager.LastName}";
+            changeTheme();
             getCustomers();
             getAccounts();
             getTransactions();
@@ -72,16 +68,14 @@ namespace BankManager
                 $"VALUES ({mid},'{cid}','{pwd}','{fname}','{lname}','{email}','{phone}');";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                cmd.ExecuteNonQuery();
-                DBConnect.conn.Close();
+                DBService.Execute(query);
+                getCustomers();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Something Went Wrong.. {ex.Message}");
             }
-            getCustomers();
+
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -97,40 +91,34 @@ namespace BankManager
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    DBService.Execute(query);
+                    getCustomers();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong..{ex.Message}");
                 }
-                getCustomers();
             }
             else
             {
-                MessageBox.Show("Select a customer for editing");
+                MessageBox.Show("Select a customer for update");
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string query = "DELETE FROM Customers " +
-                $"WHERE CustomerID={selectedCustomer?.CustomerID}";
             if (selectedCustomer != null)
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    string query = "DELETE FROM Customers " +
+                    $"WHERE CustomerID={selectedCustomer?.CustomerID}";
+                    DBService.Execute(query);
+                    getCustomers();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong..{ex.Message}");
                 }
-                getCustomers();
             }
             else
             {
@@ -143,68 +131,59 @@ namespace BankManager
         {
             string aid = aidBox.Text;
             Customer? comboSelection = customers.Where(x => x.ToComboItem() == comboBox1.Text).FirstOrDefault();
-            string query = "INSERT INTO Accounts (AccountID, CustomerID) " +
-                   $"VALUES ({aid},{comboSelection?.CustomerID ?? "0"});";
             if (comboSelection != null)
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    string query = "INSERT INTO Accounts (AccountID, CustomerID) " +
+                      $"VALUES ({aid},{comboSelection.CustomerID ?? "0"});";
+                    DBService.Execute(query);
+                    getAccounts();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong.. {ex.Message}");
                 }
             }
-            getAccounts();
         }
         private void btnUpdAcc_Click(object sender, EventArgs e)
         {
             selectedAccount = accounts.Where(x => x.AccountID == aidBox.Text).FirstOrDefault();
             Customer? comboSelection = customers.Where(x => x.ToComboItem() == comboBox1.Text).FirstOrDefault();
-            string query = "UPDATE Accounts " +
-                $"SET AccountID={selectedAccount?.AccountID ?? "0"},CustomerID={comboSelection?.CustomerID ?? "0"} " +
-                $"WHERE AccountID = {selectedAccount?.AccountID ?? "0"};";
             if (comboSelection != null && selectedAccount != null)
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    string query = "UPDATE Accounts " +
+                    $"SET AccountID={selectedAccount?.AccountID ?? "0"},CustomerID={comboSelection?.CustomerID ?? "0"} " +
+                    $"WHERE AccountID = {selectedAccount?.AccountID ?? "0"};";
+                    DBService.Execute(query);
+                    getAccounts();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong.. {ex.Message}");
                 }
             }
-            getAccounts();
         }
         private void btnDelAcc_Click(object sender, EventArgs e)
         {
             selectedAccount = accounts.Where(x => x.AccountID == aidBox.Text).FirstOrDefault();
             Customer? comboSelection = customers.Where(x => x.ToComboItem() == comboBox1.Text).FirstOrDefault();
-            string query = "DELETE FROM Accounts " +
-                $"WHERE AccountID={selectedAccount?.AccountID ?? "0"};";
             if (comboSelection != null && selectedAccount != null)
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    string query = "DELETE FROM Accounts " +
+                    $"WHERE AccountID={selectedAccount?.AccountID ?? "0"};";
+                    DBService.Execute(query);
+                    getAccounts();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong.. {ex.Message}");
                 }
             }
-            getAccounts();
         }
 
 
@@ -213,24 +192,21 @@ namespace BankManager
         {
             string limit = limitBox.Text;
             selectedCard = cards.Where(x => x.CardID == cardidBox.Text).FirstOrDefault();
-            string query = "UPDATE Cards " +
-                $"SET CardLimit={limit}, IsVerify=1 " +
-                $"WHERE CardID = {selectedCard?.CardID ?? "0"};";
             if (selectedCard != null)
             {
                 try
                 {
-                    DBConnect.conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                    cmd.ExecuteNonQuery();
-                    DBConnect.conn.Close();
+                    string query = "UPDATE Cards " +
+                      $"SET CardLimit={limit}, IsVerify=1 " +
+                      $"WHERE CardID = {selectedCard?.CardID ?? "0"};";
+                    DBService.Execute(query);
+                    getCards();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Something Went Wrong.. {ex.Message}");
                 }
             }
-            getCards();
         }
 
         //Database Model Read Operations
@@ -240,12 +216,10 @@ namespace BankManager
             customerListView.Items.Clear();
             comboBox1.Items.Clear();
             selectedCustomer = null;
-            string query = "SELECT * FROM Customers ";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                string query = "SELECT * FROM Customers ";
+                MySqlDataReader rdr = DBService.Read(query);
                 while (rdr.Read())
                 {
                     Customer customer = new Customer(rdr);
@@ -253,7 +227,7 @@ namespace BankManager
                     customerListView.Items.Add(customer.ToListItem());
                     comboBox1.Items.Add(customer.ToComboItem());
                 }
-                DBConnect.conn.Close();
+                DBService.conn.Close();
             }
             catch (Exception ex)
             {
@@ -265,22 +239,20 @@ namespace BankManager
             accounts.Clear();
             accountListView.Items.Clear();
             selectedAccount = null;
-            string query = $"SELECT Accounts.*,Customers.FirstName,Customers.LastName,Customers.CitizenID " +
-                $"FROM Accounts " +
-                $"INNER JOIN Customers " +
-                $"ON Accounts.CustomerID = Customers.CustomerID";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                string query = $"SELECT Accounts.*,Customers.FirstName,Customers.LastName,Customers.CitizenID " +
+                    $"FROM Accounts " +
+                    $"INNER JOIN Customers " +
+                    $"ON Accounts.CustomerID = Customers.CustomerID";
+                MySqlDataReader rdr = DBService.Read(query);
                 while (rdr.Read())
                 {
                     Account account = new Account(rdr);
                     accounts.Add(account);
                     accountListView.Items.Add(account.ToItem());
                 }
-                DBConnect.conn.Close();
+                DBService.conn.Close();
             }
             catch (Exception ex)
             {
@@ -291,19 +263,17 @@ namespace BankManager
         {
             transactions.Clear();
             transactionListView.Items.Clear();
-            string query = "SELECT * FROM Transactions";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                string query = "SELECT * FROM Transactions";
+                MySqlDataReader rdr = DBService.Read(query);
                 while (rdr.Read())
                 {
                     Transaction transaction = new Transaction(rdr);
                     transactions.Add(transaction);
                     transactionListView.Items.Add(transaction.ToItem());
                 }
-                DBConnect.conn.Close();
+                DBService.conn.Close();
             }
             catch (Exception ex)
             {
@@ -315,22 +285,20 @@ namespace BankManager
             cards.Clear();
             cardListView.Items.Clear();
             selectedCard = null;
-            string query = "SELECT Cards.*, Customers.FirstName, Customers.LastName, Customers.CitizenID " +
-                "FROM Cards " +
-                "INNER JOIN Customers " +
-                "ON Cards.CustomerID = Customers.CustomerID;";
             try
             {
-                DBConnect.conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, DBConnect.conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                string query = "SELECT Cards.*, Customers.FirstName, Customers.LastName, Customers.CitizenID " +
+               "FROM Cards " +
+               "INNER JOIN Customers " +
+               "ON Cards.CustomerID = Customers.CustomerID;";
+                MySqlDataReader rdr = DBService.Read(query);
                 while (rdr.Read())
                 {
                     Card card = new Card(rdr);
                     cards.Add(card);
                     cardListView.Items.Add(card.ToItem());
                 }
-                DBConnect.conn.Close();
+                DBService.conn.Close();
             }
             catch (Exception ex)
             {
@@ -343,12 +311,10 @@ namespace BankManager
             FormPassword form = new FormPassword("Manager", manager.ManagerID);
             form.ShowDialog();
         }
-
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void refreshToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             getAccounts();
@@ -356,5 +322,39 @@ namespace BankManager
             getCards();
             getTransactions();
         }
+        void changeTheme()
+        {
+            this.ForeColor = AppTheme.foreColor;
+            this.BackColor = AppTheme.backColor;
+            tabPage1.ForeColor = AppTheme.foreColor;
+            tabPage1.BackColor = AppTheme.backColor;
+            tabPage2.ForeColor = AppTheme.foreColor;
+            tabPage2.BackColor = AppTheme.backColor;
+            tabPage3.ForeColor = AppTheme.foreColor;
+            tabPage3.BackColor = AppTheme.backColor;
+            tabPage4.ForeColor = AppTheme.foreColor;
+            tabPage4.BackColor = AppTheme.backColor;
+            customerListView.BackColor = AppTheme.backColor;
+            customerListView.ForeColor = AppTheme.foreColor;
+            accountListView.BackColor = AppTheme.backColor;
+            accountListView.ForeColor = AppTheme.foreColor;
+            transactionListView.BackColor = AppTheme.backColor;
+            transactionListView.ForeColor = AppTheme.foreColor;
+            cardListView.BackColor = AppTheme.backColor;
+            cardListView.ForeColor = AppTheme.foreColor;
+
+        }
+        private void dayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppTheme.setDay();
+            changeTheme();
+        }
+        private void nightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppTheme.setNight();
+            changeTheme();
+        }
+
+      
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label6 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             customerListView = new ListView();
@@ -99,6 +98,9 @@
             signOutToolStripMenuItem = new ToolStripMenuItem();
             refreshToolStripMenuItem = new ToolStripMenuItem();
             refreshToolStripMenuItem1 = new ToolStripMenuItem();
+            themeToolStripMenuItem = new ToolStripMenuItem();
+            dayToolStripMenuItem = new ToolStripMenuItem();
+            nightToolStripMenuItem = new ToolStripMenuItem();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel1.SuspendLayout();
@@ -110,26 +112,16 @@
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(588, 24);
-            label6.Name = "label6";
-            label6.Size = new Size(190, 32);
-            label6.TabIndex = 5;
-            label6.Text = "Manager Name";
-            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(12, 59);
+            tabControl1.Location = new Point(5, 27);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 486);
+            tabControl1.Size = new Size(779, 432);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -139,7 +131,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(768, 458);
+            tabPage1.Size = new Size(771, 404);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Customers";
             tabPage1.UseVisualStyleBackColor = true;
@@ -153,7 +145,7 @@
             customerListView.Location = new Point(6, 3);
             customerListView.MultiSelect = false;
             customerListView.Name = "customerListView";
-            customerListView.Size = new Size(756, 269);
+            customerListView.Size = new Size(756, 218);
             customerListView.TabIndex = 3;
             customerListView.UseCompatibleStateImageBehavior = false;
             customerListView.View = View.Details;
@@ -214,7 +206,7 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(cidBox);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(6, 278);
+            panel1.Location = new Point(6, 227);
             panel1.Name = "panel1";
             panel1.Size = new Size(411, 174);
             panel1.TabIndex = 0;
@@ -341,7 +333,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(768, 458);
+            tabPage2.Size = new Size(771, 404);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Accounts";
             tabPage2.UseVisualStyleBackColor = true;
@@ -355,7 +347,7 @@
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(aidBox);
             panel2.Controls.Add(label7);
-            panel2.Location = new Point(6, 310);
+            panel2.Location = new Point(6, 259);
             panel2.Name = "panel2";
             panel2.Size = new Size(349, 142);
             panel2.TabIndex = 5;
@@ -432,7 +424,7 @@
             accountListView.Location = new Point(6, 6);
             accountListView.MultiSelect = false;
             accountListView.Name = "accountListView";
-            accountListView.Size = new Size(756, 298);
+            accountListView.Size = new Size(756, 247);
             accountListView.TabIndex = 4;
             accountListView.UseCompatibleStateImageBehavior = false;
             accountListView.View = View.Details;
@@ -479,7 +471,7 @@
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(768, 458);
+            tabPage4.Size = new Size(771, 404);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Transactions";
             tabPage4.UseVisualStyleBackColor = true;
@@ -493,7 +485,7 @@
             transactionListView.Location = new Point(6, 6);
             transactionListView.MultiSelect = false;
             transactionListView.Name = "transactionListView";
-            transactionListView.Size = new Size(756, 446);
+            transactionListView.Size = new Size(756, 392);
             transactionListView.TabIndex = 5;
             transactionListView.UseCompatibleStateImageBehavior = false;
             transactionListView.View = View.Details;
@@ -530,7 +522,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(768, 458);
+            tabPage3.Size = new Size(771, 404);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Credit Cards";
             tabPage3.UseVisualStyleBackColor = true;
@@ -542,14 +534,14 @@
             panel3.Controls.Add(cardidBox);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(label9);
-            panel3.Location = new Point(6, 293);
+            panel3.Location = new Point(6, 285);
             panel3.Name = "panel3";
-            panel3.Size = new Size(299, 159);
+            panel3.Size = new Size(299, 113);
             panel3.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(208, 116);
+            button1.Location = new Point(208, 76);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 4;
@@ -597,7 +589,7 @@
             cardListView.GridLines = true;
             cardListView.Location = new Point(6, 6);
             cardListView.Name = "cardListView";
-            cardListView.Size = new Size(756, 193);
+            cardListView.Size = new Size(756, 273);
             cardListView.TabIndex = 0;
             cardListView.UseCompatibleStateImageBehavior = false;
             cardListView.View = View.Details;
@@ -643,7 +635,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { accountToolStripMenuItem, refreshToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(784, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -672,7 +664,7 @@
             // 
             // refreshToolStripMenuItem
             // 
-            refreshToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { refreshToolStripMenuItem1 });
+            refreshToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { refreshToolStripMenuItem1, themeToolStripMenuItem });
             refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             refreshToolStripMenuItem.Size = new Size(80, 20);
             refreshToolStripMenuItem.Text = "Application";
@@ -685,13 +677,33 @@
             refreshToolStripMenuItem1.Text = "Refresh";
             refreshToolStripMenuItem1.Click += refreshToolStripMenuItem1_Click;
             // 
+            // themeToolStripMenuItem
+            // 
+            themeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { dayToolStripMenuItem, nightToolStripMenuItem });
+            themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            themeToolStripMenuItem.Size = new Size(180, 22);
+            themeToolStripMenuItem.Text = "Theme";
+            // 
+            // dayToolStripMenuItem
+            // 
+            dayToolStripMenuItem.Name = "dayToolStripMenuItem";
+            dayToolStripMenuItem.Size = new Size(104, 22);
+            dayToolStripMenuItem.Text = "Day";
+            dayToolStripMenuItem.Click += dayToolStripMenuItem_Click;
+            // 
+            // nightToolStripMenuItem
+            // 
+            nightToolStripMenuItem.Name = "nightToolStripMenuItem";
+            nightToolStripMenuItem.Size = new Size(104, 22);
+            nightToolStripMenuItem.Text = "Night";
+            nightToolStripMenuItem.Click += nightToolStripMenuItem_Click;
+            // 
             // FormManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 547);
+            ClientSize = new Size(784, 461);
             Controls.Add(tabControl1);
-            Controls.Add(label6);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormManager";
@@ -715,7 +727,6 @@
         }
 
         #endregion
-        private Label label6;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
@@ -788,5 +799,8 @@
         private Button button1;
         private TextBox limitBox;
         private ToolStripMenuItem refreshToolStripMenuItem1;
+        private ToolStripMenuItem themeToolStripMenuItem;
+        private ToolStripMenuItem dayToolStripMenuItem;
+        private ToolStripMenuItem nightToolStripMenuItem;
     }
 }
